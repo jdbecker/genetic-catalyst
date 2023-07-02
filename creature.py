@@ -1,2 +1,2 @@
 class Creature:
-  pass
+    pass
