@@ -1,4 +1,4 @@
-from attribute import Attribute
+from gc.attribute import Attribute
 
 class Gene:
     bonus_attribute: Attribute
