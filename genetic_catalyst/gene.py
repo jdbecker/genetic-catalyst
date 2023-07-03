@@ -1,4 +1,4 @@
-from gc.attribute import Attribute
+from genetic_catalyst.attribute import Attribute
 
 class Gene:
     bonus_attribute: Attribute
