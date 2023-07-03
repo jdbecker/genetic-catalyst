@@ -1,5 +1,6 @@
 from genetic_catalyst.attribute import Attribute
 
+
 class Gene:
     attribute_values: dict[Attribute, int]
 
