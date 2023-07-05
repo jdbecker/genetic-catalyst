@@ -1,3 +1,4 @@
+from genetic_catalyst.allele import Allele, BaseAllele
 from genetic_catalyst.gene import Gene
 from genetic_catalyst.attribute import Attribute
 from genetic_catalyst.creature import Creature
@@ -6,19 +7,11 @@ from genetic_catalyst.creature import Creature
 def default_creature():
     return Creature(
         [
+            Gene(BaseAllele(), BaseAllele()),
             Gene(
-                {
-                    Attribute.HEALTH: 100,
-                    Attribute.STRENGTH: 100,
-                    Attribute.INTELLIGENCE: 100,
-                    Attribute.CUNNING: 100,
-                    Attribute.BANDWIDTH: 100,
-                    Attribute.PERCEPTION: 100,
-                    Attribute.HARVESTING: 100,
-                    Attribute.ABSORPTION: 100,
-                }
+                Allele({Attribute.HEALTH: 1, Attribute.BANDWIDTH: -1}),
+                Allele({Attribute.HEALTH: 1, Attribute.BANDWIDTH: -1}),
             ),
-            Gene({Attribute.HEALTH: 1, Attribute.BANDWIDTH: -1}),
         ],
     )
 
