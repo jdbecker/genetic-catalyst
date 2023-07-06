@@ -90,4 +90,4 @@ class Creature:
 
 
 def new_creature() -> Creature:
-    return Creature(base_gene(), *(new_gene() for _ in range(7)))
+    return Creature(base_gene(), *(new_gene() for _ in range(8)))

@@ -42,7 +42,7 @@ class Allele:
 
     def dominant_over(self, other: "Allele") -> bool:
         """Alleles with bonuses closer to 0 are more dominant"""
-        return self.bonus() >= other.bonus()
+        return self.bonus() <= other.bonus()
 
     def propagate(self) -> "Allele":
         """logic for propagating and mutating alleles"""
