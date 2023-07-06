@@ -15,17 +15,16 @@ class Allele:
         return self.bonus() >= other.bonus()
 
 
-class BaseAllele(Allele):
-    def __init__(self):
-        super().__init__(
-            {
-                Attribute.HEALTH: 100,
-                Attribute.STRENGTH: 100,
-                Attribute.INTELLIGENCE: 100,
-                Attribute.CUNNING: 100,
-                Attribute.BANDWIDTH: 100,
-                Attribute.PERCEPTION: 100,
-                Attribute.HARVESTING: 100,
-                Attribute.ABSORPTION: 100,
-            }
-        )
+def base_allele() -> Allele:
+    return Allele(
+        {
+            Attribute.HEALTH: 100,
+            Attribute.STRENGTH: 100,
+            Attribute.INTELLIGENCE: 100,
+            Attribute.CUNNING: 100,
+            Attribute.BANDWIDTH: 100,
+            Attribute.PERCEPTION: 100,
+            Attribute.HARVESTING: 100,
+            Attribute.ABSORPTION: 100,
+        }
+    )

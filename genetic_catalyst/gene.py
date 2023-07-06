@@ -1,4 +1,4 @@
-from genetic_catalyst.allele import Allele
+from genetic_catalyst.allele import Allele, base_allele
 from genetic_catalyst.attribute import Attribute
 
 
@@ -14,3 +14,7 @@ class Gene:
     def value(self, attribute: Attribute):
         """Returns the value of the bonus or penalty for the given attribute"""
         return self.alleles[0].attribute_values.get(attribute, 0)
+
+
+def base_gene() -> Gene:
+    return Gene(base_allele(), base_allele())
