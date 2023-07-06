@@ -16,9 +16,9 @@ def default_creature():
 
 def test_creature():
     creature = default_creature()
-    assert creature.health == 101
-    assert creature.bandwidth == 99
-    assert creature.strength == 100
+    assert creature.health == 11
+    assert creature.bandwidth == 9
+    assert creature.strength == 10
 
 
 def test_repr():
