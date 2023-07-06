@@ -3,7 +3,7 @@ from genetic_catalyst.attribute import Attribute
 
 
 class Gene:
-    alleles: tuple[Allele]
+    alleles: tuple[Allele, Allele]
 
     def __init__(self, allele1: Allele, allele2: Allele):
         if allele1.dominant_over(allele2):
