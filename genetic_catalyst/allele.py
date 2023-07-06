@@ -1,12 +1,14 @@
-import random
 from genetic_catalyst.attribute import Attribute
 
 
 class Allele:
-    attributeValues: dict[Attribute, int]
+    attribute_values: dict[Attribute, int]
 
     def __init__(self, attribute_values: dict[Attribute, int]):
         self.attribute_values = attribute_values
+
+    def __repr__(self) -> str:
+        return f"Allele({self.attribute_values})"
 
     def bonus(self) -> int:
         return sum(i for i in self.attribute_values.values() if i > 0)

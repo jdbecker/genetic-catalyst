@@ -1,4 +1,3 @@
-from functools import reduce
 from genetic_catalyst.attribute import Attribute
 from genetic_catalyst.gene import Gene
 
@@ -8,10 +7,13 @@ class Creature:
     which the Creature's Attribute values are derived and each Gene gives a
     bonus to one Attribute and a penalty to another."""
 
-    genes: list[Gene]
+    genes: tuple[Gene, ...]
 
-    def __init__(self, genes: list[Gene]):
+    def __init__(self, *genes: Gene):
         self.genes = genes
+
+    def __repr__(self) -> str:
+        return f"Creature({str.join(', ', [str(gene) for gene in self.genes])})"
 
     @property
     def health(self):
