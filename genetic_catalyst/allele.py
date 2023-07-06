@@ -1,6 +1,12 @@
 """Module containing the Allele class and supporting functions"""
+from enum import Enum
 import random
 from genetic_catalyst.attribute import Attribute
+from copy import deepcopy
+
+from genetic_catalyst.utils import fibonacci_shift
+
+MUTATION_CHANCE = 0.1
 
 
 class Allele:
@@ -24,9 +30,51 @@ class Allele:
         """The total positive bonus this allele provides (used in determining dominance)"""
         return sum(i for i in self.attribute_values.values() if i > 0)
 
+    def bonus_attribute(self) -> Attribute:
+        return max(self.attribute_values, key=self.attribute_values.get)  # type: ignore
+
+    def penalty(self) -> int:
+        """The total negative penalty this allele provides (used in mutation logic)"""
+        return sum(i for i in self.attribute_values.values() if i < 0)
+
+    def penalty_attribute(self) -> Attribute:
+        return min(self.attribute_values, key=self.attribute_values.get)  # type: ignore
+
     def dominant_over(self, other: "Allele") -> bool:
         """Alleles with bonuses closer to 0 are more dominant"""
         return self.bonus() >= other.bonus()
+
+    def propagate(self) -> "Allele":
+        """logic for propagating and mutating alleles"""
+        if self.penalty() == 0:
+            return deepcopy(self)  # Base allele has different rules for propagation
+        else:
+            if random.random() < MUTATION_CHANCE:
+                return self._mutate()
+            else:
+                return deepcopy(self)
+
+    def _mutate(self) -> "Allele":
+        new_bonus = self.bonus()
+        match (random.choice(list(MutateDirection))):
+            case MutateDirection.DOWN:
+                new_bonus -= 1
+            case MutateDirection.UP:
+                new_bonus += 1
+        if new_bonus <= 0:
+            return new_allele()
+        else:
+            return Allele(
+                {
+                    self.bonus_attribute(): new_bonus,
+                    self.penalty_attribute(): -fibonacci_shift(new_bonus),
+                }
+            )
+
+
+class MutateDirection(Enum):
+    DOWN = 1
+    UP = 2
 
 
 def base_allele() -> Allele:

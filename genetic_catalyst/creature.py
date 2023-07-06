@@ -83,7 +83,7 @@ class Creature:
     def breed(self, other: "Creature") -> "Creature":
         return Creature(
             *(
-                Gene(genes[0].random_allele(), genes[1].random_allele())
+                Gene(genes[0].propagate_allele(), genes[1].propagate_allele())
                 for genes in zip(self.genes, other.genes)
             )
         )

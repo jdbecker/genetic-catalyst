@@ -24,8 +24,10 @@ class Gene:
         """Returns the value of the bonus or penalty for the given attribute"""
         return self.alleles[0].attribute_values.get(attribute, 0)
 
-    def random_allele(self) -> Allele:
-        return random.choice(self.alleles)
+    def propagate_allele(self) -> Allele:
+        """Used by Creature to breed. Calls propagate on a random Allele in order to
+        allow the Allele to check for mutation before being copied to the new Gene."""
+        return random.choice(self.alleles).propagate()
 
 
 def base_gene() -> Gene:
