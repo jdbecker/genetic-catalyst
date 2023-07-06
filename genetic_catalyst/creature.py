@@ -14,7 +14,7 @@ class Creature:
         self.genes = genes
 
     def __repr__(self) -> str:
-        return f"Creature({str.join(', ', [str(gene) for gene in self.genes])})"
+        return f"Creature({str.join(', ', [repr(gene) for gene in self.genes])})"
 
     def __str__(self) -> str:
         table = tabulate(
@@ -42,6 +42,11 @@ class Creature:
             ]
         )
         return str(table)
+
+    def inspect(self) -> str:
+        return "INSPECTING CREATURE:\n" + str.join(
+            "\n", [str(gene) for gene in self.genes]
+        )
 
     @property
     def health(self):
@@ -76,7 +81,12 @@ class Creature:
         return sum(gene.value(Attribute.ABSORPTION) for gene in self.genes)
 
     def breed(self, other: "Creature") -> "Creature":
-        return Creature(*(Gene(genes[0].random_allele(), genes[1].random_allele()) for genes in zip(self.genes, other.genes)))
+        return Creature(
+            *(
+                Gene(genes[0].random_allele(), genes[1].random_allele())
+                for genes in zip(self.genes, other.genes)
+            )
+        )
 
 
 def new_creature() -> Creature:

@@ -11,6 +11,9 @@ class Allele:
     def __repr__(self) -> str:
         return f"Allele({self.attribute_values})"
 
+    def __str__(self) -> str:
+        return str.join(", ", [f"{k}: {v}" for k, v in self.attribute_values.items()])
+
     def bonus(self) -> int:
         return sum(i for i in self.attribute_values.values() if i > 0)
 
