@@ -1,6 +1,6 @@
 from tabulate import tabulate
 from genetic_catalyst.attribute import Attribute
-from genetic_catalyst.gene import Gene
+from genetic_catalyst.gene import Gene, base_gene, new_gene
 
 
 class Creature:
@@ -74,3 +74,10 @@ class Creature:
     @property
     def absorption(self):
         return sum(gene.value(Attribute.ABSORPTION) for gene in self.genes)
+
+    def breed(self, other: "Creature") -> "Creature":
+        return Creature(*(Gene(genes[0].random_allele(), genes[1].random_allele()) for genes in zip(self.genes, other.genes)))
+
+
+def new_creature() -> Creature:
+    return Creature(base_gene(), *(new_gene() for _ in range(7)))
