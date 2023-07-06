@@ -1,4 +1,3 @@
-from pprint import pprint
 from genetic_catalyst.allele import Allele, base_allele
 from genetic_catalyst.gene import Gene, base_gene
 from genetic_catalyst.attribute import Attribute
