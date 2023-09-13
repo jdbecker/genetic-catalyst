@@ -1,10 +1,10 @@
 """Module containing the Allele class and supporting functions"""
 from enum import Enum
 import random
-from genetic_catalyst.attribute import Attribute
+from src.attribute import Attribute
 from copy import deepcopy
 
-from genetic_catalyst.utils import fibonacci_shift
+from src.utils import fibonacci_shift
 
 MUTATION_CHANCE = 0.1
 

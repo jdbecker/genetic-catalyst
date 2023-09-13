@@ -1,6 +1,6 @@
 from tabulate import tabulate
-from genetic_catalyst.attribute import Attribute
-from genetic_catalyst.gene import Gene, base_gene, new_gene
+from src.attribute import Attribute
+from src.gene import Gene, base_gene, new_gene
 
 
 class Creature:

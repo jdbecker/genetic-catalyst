@@ -1,6 +1,6 @@
 import random
-from genetic_catalyst.allele import Allele, base_allele, new_allele
-from genetic_catalyst.attribute import Attribute
+from src.allele import Allele, base_allele, new_allele
+from src.attribute import Attribute
 
 
 class Gene:

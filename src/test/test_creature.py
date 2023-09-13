@@ -1,7 +1,7 @@
-from genetic_catalyst.allele import Allele, base_allele
-from genetic_catalyst.gene import Gene, base_gene
-from genetic_catalyst.attribute import Attribute
-from genetic_catalyst.creature import Creature
+from src.allele import Allele, base_allele
+from src.gene import Gene, base_gene
+from src.attribute import Attribute
+from src.creature import Creature
 
 
 def default_creature():

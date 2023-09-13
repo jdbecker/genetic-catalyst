@@ -1,4 +1,4 @@
-from genetic_catalyst.utils import fibonacci, fibonacci_shift
+from src.utils import fibonacci, fibonacci_shift
 
 
 def test_fibonacci():
