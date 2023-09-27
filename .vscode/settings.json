@@ -2,5 +2,13 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.analysis.extraPaths": ["./manage.py", "./genetic_catalyst"],
+    "python.linting.pylintEnabled": false,
+    "python.analysis.packageIndexDepths": [
+        {
+            "name": "django",
+            "depth": 5
+        }
+    ]
 }
